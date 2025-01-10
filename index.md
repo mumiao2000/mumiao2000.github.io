@@ -2,7 +2,7 @@
 layout: default
 ---
 
-I am a post-graduate student, majoring in Computer Science. My interest lies in temporal series analysis and large language models.
+I am a post-graduate student, majoring in Computer Science. My interest lies in time series analysis and its applications.
 
 ## Education
 
