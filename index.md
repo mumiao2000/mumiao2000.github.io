@@ -12,6 +12,9 @@ I am a post-graduate student, majoring in Computer Science. My interest lies in 
 
 ## Publication
 
-- Capacity estimation of retired lithium-ion batteries using random charging segments from massive real-world data.
-  Cell Reports Physical Science (**CRPS**), 2025.
-  **Pengfei Zhou**, Junli Liang, Yunlong Liu, Ji Wu\*, Qi Song\*, Xiangyang Li
+1. 
+Capacity estimation of retired lithium-ion batteries using random charging segments from massive real-world data.
+
+Cell Reports Physical Science (**CRPS**), 2025.
+
+**Pengfei Zhou**, Junli Liang, Yunlong Liu, Ji Wu\*, Qi Song\*, Xiangyang Li
