@@ -16,4 +16,4 @@ I am a post-graduate student, majoring in Computer Science. My interest lies in 
     
     Cell Reports Physical Science (**CRPS**), 2025.
     
-    **Pengfei Zhou**, Junli Liang, Yunlong Liu, Ji Wu*, Qi Song*, Xiangyang Li
+    **Pengfei Zhou**, Junli Liang, Yunlong Liu, Ji Wu\*, Qi Song\*, Xiangyang Li
