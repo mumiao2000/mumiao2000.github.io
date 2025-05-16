@@ -15,7 +15,7 @@ I am a post-graduate student, majoring in Computer Science. My interest lies in 
 
 1. CrossLinear: Plug-and-Play Cross-Correlation Embedding for Time Series Forecasting with Exogenous Variables.
     
-    31st SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**, accptance rate: 18.4%), 2025.
+    31st SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**, acceptance rate: 18.4%), 2025.
     
     **Pengfei Zhou**, Yunlong Liu, Junli Liang, Qi Song\*, Xiangyang Li
 
