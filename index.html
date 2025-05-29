@@ -11,11 +11,7 @@
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <!-- Babel for JSX support in browser -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <!-- Smooth Scroll Animation -->
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
@@ -63,36 +59,26 @@
 
       const awards = [
         {
-          title: "Best Paper Award",
-          event: "ICML Conference, 2023",
-          description: "Awarded for outstanding contribution to the field of machine learning.",
+          title: "Outstanding Student Scholarship (Grade 2)",
+          event: "University of Science and Technology of China, 2024",
         },
         {
-          title: "Google PhD Fellowship",
-          event: "Google Research, 2022",
-          description: "Fellowship supporting research in AI and machine learning.",
+          title: "Outstanding Student Scholarship (Grade 2)",
+          event: "University of Science and Technology of China, 2023",
         },
       ];
 
       return (
         <div className="min-h-screen bg-gray-50 text-gray-800">
-          {/* Header / Navigation */}
           <header className="bg-white shadow-md sticky top-0 z-10">
-            <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
-              <div className="flex items-center space-x-4 mb-4 md:mb-0">
+            <div className="max-w-6xl mx-auto px-4 py-6 flex items-center">
+              <div className="flex items-center space-x-4">
                 <img src={profile.avatar} alt="Avatar" className="w-16 h-16 rounded-full object-cover" />
                 <div>
                   <h1 className="text-2xl font-bold">{profile.name}</h1>
                   <p className="text-sm text-gray-600">{profile.title}</p>
                 </div>
               </div>
-
-              {/* Navigation Links */}
-              <nav className="flex space-x-6 mt-4 md:mt-0">
-                <a href="#profile" className="text-blue-700 hover:underline">Profile</a>
-                <a href="#publications" className="text-blue-700 hover:underline">Publications</a>
-                <a href="#awards" className="text-blue-700 hover:underline">Awards</a>
-              </nav>
             </div>
           </header>
 
@@ -153,7 +139,6 @@
                   <li key={index} className="border-l-4 border-purple-500 pl-4">
                     <h3 className="font-medium text-lg text-purple-700">{award.title}</h3>
                     <p className="text-sm text-gray-600 mb-1">{award.event}</p>
-                    <p className="text-sm text-gray-800">{award.description}</p>
                   </li>
                 ))}
               </ul>
