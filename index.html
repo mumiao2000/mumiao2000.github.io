@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Academic Profile</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <!-- React & ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script> 
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> 
+  <!-- Babel for JSX support in browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.4s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+  <div id="root"></div>
+
+  <!-- React App -->
+  <script type="text/babel">
+    const App = () => {
+      // Profile Data (easy to edit)
+      const profile = {
+        name: "Dr. John Doe",
+        title: "PhD Candidate in Computer Science",
+        bio: "I'm a researcher focused on machine learning and artificial intelligence at Stanford University.",
+        avatar: "https://placehold.co/300x300", 
+        email: "john.doe@example.com",
+        github: "https://github.com/johndoe", 
+        linkedin: "https://linkedin.com/in/johndoe", 
+        orcid: "https://orcid.org/0000-0000-0000-0000", 
+        education: [
+          { degree: "PhD in Computer Science", university: "Stanford University", years: "2020–Present" },
+          { degree: "BS in Artificial Intelligence", university: "MIT", years: "2016–2020" },
+        ],
+      };
+
+      const publications = [
+        {
+          title: "Deep Learning for Medical Diagnosis",
+          authors: "John Doe, Jane Smith, Alex Johnson",
+          journal: "Nature Machine Intelligence, 2024",
+          link: "#",
+        },
+        {
+          title: "Efficient Neural Network Pruning Techniques",
+          authors: "John Doe, Emily Davis",
+          journal: "NeurIPS, 2023",
+          link: "#",
+        },
+        {
+          title: "AI-Driven Personalized Education Systems",
+          authors: "John Doe, Michael Lee, Sarah Kim",
+          journal: "IEEE Transactions on Learning Technologies, 2023",
+          link: "#",
+        },
+      ];
+
+      const awards = [
+        {
+          title: "Best Paper Award",
+          event: "ICML Conference, 2023",
+          description: "Awarded for outstanding contribution to the field of machine learning.",
+        },
+        {
+          title: "Google PhD Fellowship",
+          event: "Google Research, 2022",
+          description: "Fellowship supporting research in AI and machine learning.",
+        },
+        {
+          title: "Outstanding Student Researcher",
+          event: "Stanford University, 2021",
+          description: "Recognizing excellence in graduate-level research.",
+        },
+      ];
+
+      return (
+        <div className="min-h-screen bg-gray-50 text-gray-800">
+          {/* Header / Navigation */}
+          <header className="bg-white shadow-md sticky top-0 z-10">
+            <div className="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+              <div className="flex items-center space-x-4 mb-4 md:mb-0">
+                <img src={profile.avatar} alt="Avatar" className="w-16 h-16 rounded-full object-cover" />
+                <div>
+                  <h1 className="text-2xl font-bold">{profile.name}</h1>
+                  <p className="text-sm text-gray-600">{profile.title}</p>
+                </div>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="flex space-x-6 mt-4 md:mt-0">
+                <a href="#profile" className="text-blue-700 hover:underline">Profile</a>
+                <a href="#publications" className="text-blue-700 hover:underline">Publications</a>
+                <a href="#awards" className="text-blue-700 hover:underline">Awards</a>
+              </nav>
+            </div>
+          </header>
+
+          {/* Main Content */}
+          <main className="max-w-6xl mx-auto px-4 py-12">
+            {/* Profile Section */}
+            <section id="profile" className="mb-16 animate-fadeIn">
+              <h2 className="text-2xl font-semibold mb-4">About Me</h2>
+              <p className="mb-6 leading-relaxed">{profile.bio}</p>
+
+              <h3 className="text-lg font-medium mt-6 mb-3">Education</h3>
+              <ul className="space-y-3">
+                {profile.education.map((edu, idx) => (
+                  <li key={idx}>
+                    <p className="font-medium">{edu.degree}</p>
+                    <p className="text-sm text-gray-600">{edu.university}, {edu.years}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="text-lg font-medium mt-6 mb-3">Contact</h3>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <a href={`mailto:${profile.email}`} className="flex items-center text-blue-600 hover:underline">
+                  📧 {profile.email}
+                </a>
+                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                  💼 GitHub
+                </a>
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                  🔗 LinkedIn
+                </a>
+                <a href={profile.orcid} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
+                  🔐 ORCID
+                </a>
+              </div>
+            </section>
+
+            {/* Publications Section */}
+            <section id="publications" className="mb-16 animate-fadeIn">
+              <h2 className="text-2xl font-semibold mb-6">Publications</h2>
+              <ul className="space-y-6">
+                {publications.map((pub, index) => (
+                  <li key={index} className="border-l-4 border-blue-500 pl-4">
+                    <h3 className="font-medium text-lg">
+                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:underline">
+                        {pub.title}
+                      </a>
+                    </h3>
+                    <p className="text-sm text-gray-700 italic mb-1">Authors: {pub.authors}</p>
+                    <p className="text-sm text-gray-600">{pub.journal}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Awards Section - Now as a List */}
+            <section id="awards" className="animate-fadeIn">
+              <h2 className="text-2xl font-semibold mb-6">Awards & Honors</h2>
+              <ul className="space-y-6">
+                {awards.map((award, index) => (
+                  <li key={index} className="border-l-4 border-purple-500 pl-4">
+                    <h3 className="font-medium text-lg text-purple-700">{award.title}</h3>
+                    <p className="text-sm text-gray-600 mb-1">{award.event}</p>
+                    <p className="text-sm text-gray-800">{award.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </main>
+
+          {/* Footer */}
+          <footer className="bg-white border-t mt-12 py-6">
+            <div className="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+              © {new Date().getFullYear()} {profile.name}. Built with ❤️ using React.
+            </div>
+          </footer>
+        </div>
+      );
+    };
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
