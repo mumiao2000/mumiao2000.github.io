@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Academic Profile</title>
+  <title>Pengfei Zhou's Homepage</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script> 
   <!-- React & ReactDOM from CDN -->
@@ -29,38 +29,31 @@
     const App = () => {
       // Profile Data (easy to edit)
       const profile = {
-        name: "Dr. John Doe",
-        title: "PhD Candidate in Computer Science",
-        bio: "I'm a researcher focused on machine learning and artificial intelligence at Stanford University.",
-        avatar: "https://placehold.co/300x300", 
-        email: "john.doe@example.com",
-        github: "https://github.com/johndoe", 
-        linkedin: "https://linkedin.com/in/johndoe", 
-        orcid: "https://orcid.org/0000-0000-0000-0000", 
+        name: "Pengfei Zhou",
+        title: "Master Candidate in Computer Technology",
+        bio: "I am a post-graduate student, majoring in Computer Science. My interest lies in time series analysis and its applications.",
+        avatar: "./photo.jpg",
+        email: "pengfeizhou@mail.ustc.edu.cn",
+        github: "https://github.com/mumiao2000",
+        orcid: "https://orcid.org/0009-0007-6369-3181",
         education: [
-          { degree: "PhD in Computer Science", university: "Stanford University", years: "2020–Present" },
-          { degree: "BS in Artificial Intelligence", university: "MIT", years: "2016–2020" },
+          { degree: "Master in Computer Technology", university: "University of Science and Technology of China", years: "2023-Present" },
+          { degree: "Bachelor in Plant Protection", university: "Zhejiang University", years: "2019-2023" },
         ],
       };
 
       const publications = [
         {
-          title: "Deep Learning for Medical Diagnosis",
-          authors: "John Doe, Jane Smith, Alex Johnson",
-          journal: "Nature Machine Intelligence, 2024",
+          title: "CrossLinear: Plug-and-Play Cross-Correlation Embedding for Time Series Forecasting with Exogenous Variables",
+          authors: "Pengfei Zhou, Yunlong Liu, Junli Liang, Qi Song\*, Xiangyang Li",
+          journal: "The 31st SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2025",
           link: "#",
         },
         {
-          title: "Efficient Neural Network Pruning Techniques",
-          authors: "John Doe, Emily Davis",
-          journal: "NeurIPS, 2023",
-          link: "#",
-        },
-        {
-          title: "AI-Driven Personalized Education Systems",
-          authors: "John Doe, Michael Lee, Sarah Kim",
-          journal: "IEEE Transactions on Learning Technologies, 2023",
-          link: "#",
+          title: "Capacity Estimation of Retired Lithium-Ion Batteries Using Random Charging Segments from Massive Real-World Data",
+          authors: "Pengfei Zhou, Junli Liang, Yunlong Liu, Ji Wu\*, Qi Song\*, Xiangyang Li",
+          journal: "Cell Reports Physical Science (CRPS), 2025",
+          link: "https://doi.org/10.1016/j.xcrp.2025.102444",
         },
       ];
 
@@ -74,11 +67,6 @@
           title: "Google PhD Fellowship",
           event: "Google Research, 2022",
           description: "Fellowship supporting research in AI and machine learning.",
-        },
-        {
-          title: "Outstanding Student Researcher",
-          event: "Stanford University, 2021",
-          description: "Recognizing excellence in graduate-level research.",
         },
       ];
 
@@ -128,9 +116,6 @@
                 </a>
                 <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
                   💼 GitHub
-                </a>
-                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
-                  🔗 LinkedIn
                 </a>
                 <a href={profile.orcid} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
                   🔐 ORCID
