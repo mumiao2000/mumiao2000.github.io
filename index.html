@@ -121,10 +121,10 @@
                   <li key={index} className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-medium text-lg text-blue-700">{pub.title}</h3>
                     <p className="text-sm text-gray-700">Authors: {pub.authors}</p>
-                    <p className="text-sm text-gray-600">{pub.journal}</p>
+                    <p className="text-sm text-gray-700">{pub.journal}</p>
                     <p className="font-medium text-sm">
-                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 italic mb-1 hover:underline">
-                        Link: {pub.link}
+                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 italic hover:underline">
+                        {pub.link}
                       </a>
                     </p>
                   </li>
@@ -139,7 +139,7 @@
                 {awards.map((award, index) => (
                   <li key={index} className="border-l-4 border-purple-500 pl-4">
                     <h3 className="font-medium text-lg text-purple-700">{award.title}</h3>
-                    <p className="text-sm text-gray-600 mb-1">{award.event}</p>
+                    <p className="text-sm text-gray-700">{award.event}</p>
                   </li>
                 ))}
               </ul>
