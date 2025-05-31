@@ -120,10 +120,10 @@
                 {publications.map((pub, index) => (
                   <li key={index} className="border-l-4 border-blue-500 pl-4">
                     <h3 className="font-medium text-lg text-blue-700">{pub.title}</h3>
-                    <p className="text-sm text-gray-700 italic mb-1">Authors: {pub.authors}</p>
+                    <p className="text-sm text-gray-700">Authors: {pub.authors}</p>
                     <p className="text-sm text-gray-600">{pub.journal}</p>
                     <p className="font-medium text-sm">
-                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:underline">
+                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 italic mb-1 hover:underline">
                         Link: {pub.link}
                       </a>
                     </p>
