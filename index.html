@@ -4,161 +4,119 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pengfei Zhou's Homepage</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- React & ReactDOM from CDN -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <!-- Babel for JSX support in browser -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <style>
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .animate-fadeIn {
-      animation: fadeIn 0.4s ease-out;
-    }
-  </style>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen">
+<body class="bg-white text-gray-800 min-h-screen font-serif">
   <div id="root"></div>
 
-  <!-- React App -->
   <script type="text/babel">
     const App = () => {
-      // Profile Data (easy to edit)
       const profile = {
         name: "Pengfei Zhou",
         title: "Master's Student in Computer Technology",
-        bio: "I am a master's student in Computer Technology at University of Science and Technology of China (advised by Prof. Qi Song). My interest lies in time series analysis and its applications.",
+        bio: (
+          <>
+            I am a master's student in Computer Technology at University of Science and Technology of China, advised by{" "}
+            <a href="https://songqi1990.github.io" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Prof. Qi Song
+            </a>. My interest lies in time series analysis and its applications.
+          </>
+        ),
         avatar: "./photo.jpg",
         email: "pengfeizhou@mail.ustc.edu.cn",
         github: "https://github.com/mumiao2000",
         orcid: "https://orcid.org/0009-0007-6369-3181",
+        scholar: "https://scholar.google.com/citations?user=_8wiBlYAAAAJ",
         education: [
-          { degree: "Master in Computer Technology", university: "University of Science and Technology of China", years: "2023-Present" },
-          { degree: "Bachelor in Plant Protection", university: "Zhejiang University", years: "2019-2023" },
+          { degree: "Master in Computer Technology", university: "University of Science and Technology of China", years: "2023–Present" },
+          { degree: "Bachelor in Plant Protection", university: "Zhejiang University", years: "2019–2023" },
         ],
       };
 
       const publications = [
         {
           title: "CrossLinear: Plug-and-Play Cross-Correlation Embedding for Time Series Forecasting with Exogenous Variables",
-          authors: "Pengfei Zhou, Yunlong Liu, Junli Liang, Qi Song\*, Xiangyang Li",
+          authors: "Pengfei Zhou, Yunlong Liu, Junli Liang, Qi Song*, Xiangyang Li",
           journal: "The 31st SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2025",
           link: "https://doi.org/10.48550/arXiv.2505.23116",
         },
         {
           title: "Capacity Estimation of Retired Lithium-Ion Batteries Using Random Charging Segments from Massive Real-World Data",
-          authors: "Pengfei Zhou, Junli Liang, Yunlong Liu, Ji Wu\*, Qi Song\*, Xiangyang Li",
+          authors: "Pengfei Zhou, Junli Liang, Yunlong Liu, Ji Wu*, Qi Song*, Xiangyang Li",
           journal: "Cell Reports Physical Science (CRPS), 2025",
           link: "https://doi.org/10.1016/j.xcrp.2025.102444",
         },
       ];
 
       const awards = [
-        {
-          title: "National Scholarship",
-          event: "University of Science and Technology of China, 2025",
-        },
-        {
-          title: "Graduate Academic Scholarship (Grade 1)",
-          event: "University of Science and Technology of China, 2025",
-        },
-        {
-          title: "Graduate Academic Scholarship (Grade 2)",
-          event: "University of Science and Technology of China, 2024",
-        },
-        {
-          title: "Graduate Academic Scholarship (Grade 2)",
-          event: "University of Science and Technology of China, 2023",
-        },
+        { title: "National Scholarship", event: "University of Science and Technology of China, 2025" },
+        { title: "Graduate Academic Scholarship (Grade 1)", event: "University of Science and Technology of China, 2025" },
+        { title: "Graduate Academic Scholarship (Grade 2)", event: "University of Science and Technology of China, 2024" },
+        { title: "Graduate Academic Scholarship (Grade 2)", event: "University of Science and Technology of China, 2023" },
       ];
 
       return (
-        <div className="min-h-screen bg-gray-50 text-gray-800">
-          <header className="bg-white shadow-md sticky top-0 z-10">
-            <div className="max-w-6xl mx-auto px-4 py-6 flex items-center">
-              <div className="flex items-center space-x-4">
-                <img src={profile.avatar} alt="Avatar" className="w-16 h-16 rounded-full object-cover" />
-                <div>
-                  <h1 className="text-2xl font-bold">{profile.name}</h1>
-                  <p className="text-sm text-gray-600">{profile.title}</p>
-                </div>
-              </div>
+        <div className="max-w-3xl mx-auto px-6 py-10">
+          <header className="flex items-center space-x-6 mb-10">
+            <img src={profile.avatar} alt="Avatar" className="w-24 h-24 rounded-full object-cover" />
+            <div>
+              <h1 className="text-3xl font-semibold">{profile.name}</h1>
+              <p className="text-gray-600">{profile.title}</p>
             </div>
           </header>
 
-          {/* Main Content */}
-          <main className="max-w-6xl mx-auto px-4 py-12">
-            {/* Profile Section */}
-            <section id="profile" className="mb-16 animate-fadeIn">
-              <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-              <p className="mb-6 leading-relaxed">{profile.bio}</p>
+          <section className="mb-12">
+            <h2 className="text-xl font-semibold mb-3">About Me</h2>
+            <p className="leading-relaxed mb-4">{profile.bio}</p>
 
-              <h3 className="text-lg font-medium mt-6 mb-3">Education</h3>
-              <ul className="space-y-3">
-                {profile.education.map((edu, idx) => (
-                  <li key={idx}>
-                    <p className="font-medium">{edu.degree}</p>
-                    <p className="text-sm text-gray-600">{edu.university}, {edu.years}</p>
-                  </li>
-                ))}
-              </ul>
+            <h3 className="text-lg font-medium mb-2">Education</h3>
+            <ul className="list-disc ml-6 space-y-2">
+              {profile.education.map((edu, i) => (
+                <li key={i}>
+                  <span className="font-medium">{edu.degree}</span>, {edu.university} ({edu.years})
+                </li>
+              ))}
+            </ul>
 
-              <h3 className="text-lg font-medium mt-6 mb-3">Contact</h3>
-              <div className="flex flex-wrap gap-4 text-sm">
-                <a href={`mailto:${profile.email}`} className="flex items-center text-blue-600 hover:underline">
-                  📧 {profile.email}
-                </a>
-                <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
-                  💼 GitHub
-                </a>
-                <a href={profile.orcid} target="_blank" rel="noopener noreferrer" className="flex items-center text-blue-600 hover:underline">
-                  🔐 ORCID
-                </a>
-              </div>
-            </section>
-
-            {/* Publications Section */}
-            <section id="publications" className="mb-16 animate-fadeIn">
-              <h2 className="text-2xl font-semibold mb-6">Publications</h2>
-              <ul className="space-y-6">
-                {publications.map((pub, index) => (
-                  <li key={index} className="border-l-4 border-blue-500 pl-4">
-                    <h3 className="font-medium text-lg text-blue-700">{pub.title}</h3>
-                    <p className="text-sm text-gray-700">Authors: {pub.authors}</p>
-                    <p className="text-sm text-gray-700">{pub.journal}</p>
-                    <p className="font-medium text-sm">
-                      <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 italic hover:underline">
-                        {pub.link}
-                      </a>
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            {/* Awards Section - Now as a List */}
-            <section id="awards" className="animate-fadeIn">
-              <h2 className="text-2xl font-semibold mb-6">Awards & Honors</h2>
-              <ul className="space-y-6">
-                {awards.map((award, index) => (
-                  <li key={index} className="border-l-4 border-purple-500 pl-4">
-                    <h3 className="font-medium text-lg text-purple-700">{award.title}</h3>
-                    <p className="text-sm text-gray-700">{award.event}</p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          </main>
-
-          {/* Footer */}
-          <footer className="bg-white border-t mt-12 py-6">
-            <div className="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
-              © {new Date().getFullYear()} {profile.name}. Built with ❤️ using React.
+            <h3 className="text-lg font-medium mt-4 mb-2">Contact</h3>
+            <div className="flex flex-wrap gap-3 text-sm">
+              <a href={`mailto:${profile.email}`} className="text-blue-600 hover:underline">📧 {profile.email}</a>
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">💼 GitHub</a>
+              <a href={profile.orcid} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">🔐 ORCID</a>
+              <a href={profile.scholar} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">🎓 Google Scholar</a>
             </div>
+          </section>
+
+          <section className="mb-12">
+            <h2 className="text-xl font-semibold mb-3">Publications</h2>
+            <ul className="space-y-4">
+              {publications.map((pub, i) => (
+                <li key={i}>
+                  <p className="font-medium">{pub.title}</p>
+                  <p className="text-sm text-gray-700">{pub.authors}</p>
+                  <p className="text-sm italic text-gray-600">{pub.journal}</p>
+                  <a href={pub.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 text-sm hover:underline">{pub.link}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold mb-3">Awards & Honors</h2>
+            <ul className="list-disc ml-6 space-y-2">
+              {awards.map((a, i) => (
+                <li key={i}>
+                  <span className="font-medium">{a.title}</span> — {a.event}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <footer className="mt-10 text-center text-sm text-gray-500">
+            © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </footer>
         </div>
       );
