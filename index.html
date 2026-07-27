@@ -1,181 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pengfei Zhou's Homepage</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: #ffffff;
-      color: #1f2937;
-      line-height: 1.6;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pengfei Zhou — Homepage</title>
+
+<!-- 字体：Google Fonts CDN，联网时加载；断网自动回退系统字体，不影响排版 -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  修改指南（全站只有一个文件，无需任何依赖）
+  ────────────────────────────────────────────────────────────────
+  ① 颜色 / 字体 / 版宽：改下方 <style> 里 :root 的变量即可
+  ② 顶部导航栏：改 <nav class="topnav"> 里的链接；
+     新增栏目 = 加一条 <a href="#某id"> + 给对应 <section> 加相同 id
+  ③ 每个内容区块上方都有中文注释横幅，找到后直接改文字
+  ④ 新增一篇论文：复制一整个 <article class="pub">…</article> 块
+  ⑤ 头像：把照片命名为 photo.jpg 放到本文件同一目录；
+     不放照片时页面会自动收起头像，不影响排版
+  ⑥ 深色模式已内置（跟随系统），配色在 @media (prefers-color-scheme) 里改
+  ════════════════════════════════════════════════════════════════
+-->
+
+<style>
+  /* ════════ ① 主题变量：换肤只改这里 ════════ */
+  :root {
+    --bg:        #ffffff;             /* 白底 */
+    --ink:       #182130;             /* 主文字（深海军蓝调近黑） */
+    --ink-2:     rgba(31, 39, 51, .72);  /* 次级文字 */
+    --ink-3:     rgba(31, 39, 51, .50);  /* 辅助文字 */
+    --accent:    #1d4ed8;             /* 强调色（蓝）：会议标签、链接 */
+    --line:      rgba(31, 39, 51, .13);  /* 发丝分隔线 */
+    --mark:      #dbeafe;             /* 文字选中高亮 */
+    --serif: Newsreader, Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
+    --sans:  Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+             "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    --width: 44rem;                   /* 正文版宽 */
+    --nav-h: 3.25rem;                 /* 顶部导航栏高度 */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:     #0e141c;
+      --ink:    #e8edf4;
+      --ink-2:  rgba(232, 237, 244, .72);
+      --ink-3:  rgba(232, 237, 244, .48);
+      --accent: #7aa5f8;
+      --line:   rgba(232, 237, 244, .16);
+      --mark:   #1e3a6e;
     }
-    a { color: #2563eb; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .container {
-      max-width: 768px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    .avatar {
-      width: 6rem;
-      height: 6rem;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.875rem;
-      font-weight: 600;
-    }
-    .title {
-      margin: 0.25rem 0 0;
-      color: #4b5563;
-    }
-    section { margin-bottom: 2.5rem; }
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0 0 0.75rem;
-    }
-    h3 {
-      font-size: 1.125rem;
-      font-weight: 500;
-      margin: 1rem 0 0.5rem;
-    }
-    p { margin: 0 0 1rem; }
-    ul {
-      margin: 0;
-      padding-left: 1.5rem;
-    }
-    li { margin-bottom: 0.5rem; }
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.875rem;
-    }
-    .publication { margin-bottom: 1rem; }
-    .publication p { margin: 0 0 0.25rem; }
-    .pub-authors { font-size: 0.875rem; color: #374151; }
-    .pub-journal { font-size: 0.875rem; font-style: italic; color: #4b5563; }
-    .pub-link { font-size: 0.875rem; word-break: break-all; }
-    footer {
-      margin-top: 2.5rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: #6b7280;
-    }
-    @media (max-width: 480px) {
-      header { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+  }
+
+  /* ════════ 基础排版（一般不用动） ════════ */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    letter-spacing: -.004em;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--mark); color: var(--ink); }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  .container {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 1.5rem 2.5rem;
+    counter-reset: section;   /* 章节自动编号 */
+  }
+
+  /* ════════ ② 顶部导航栏：吸顶 + 锚点跳转 ════════ */
+  .topnav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: var(--nav-h);
+    margin: 0 -1.5rem 2.25rem;   /* 拉通到视口两侧 */
+    padding: 0 max(1.5rem, calc((100vw - var(--width)) / 2 + 1.5rem));
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    font-size: .82rem;
+  }
+  .topnav .brand {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.05rem;
+    letter-spacing: -.01em;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .topnav .brand:hover { text-decoration: none; color: var(--accent); }
+  .topnav nav {
+    display: flex;
+    gap: 1.3rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .topnav nav::-webkit-scrollbar { display: none; }
+  .topnav nav a {
+    color: var(--ink-2);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-size: .76rem;
+  }
+  .topnav nav a:hover { color: var(--accent); text-decoration: none; }
+  section { scroll-margin-top: calc(var(--nav-h) + 1rem); }  /* 跳转时不被导航挡住 */
+
+  /* ════════ 页眉：照片 + 姓名 + 头衔 + 链接 ════════ */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .avatar {
+    width: 7rem; height: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: 2.7rem;
+    font-weight: 500;
+    font-optical-sizing: auto;
+    letter-spacing: -.02em;
+    margin: 0 0 .4rem;
+    line-height: 1.08;
+  }
+  /* 头部层级：衬线大名 → 斜体身份 → 小帽大学 */
+  .headline {
+    margin: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink-2);
+  }
+  .headline em {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: .74rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .links {
+    display: flex; flex-wrap: wrap; gap: 0 .4rem;
+    margin-top: .7rem;
+    font-size: .82rem;
+    letter-spacing: .04em;
+  }
+  .links a { text-transform: uppercase; }
+  .links span { color: var(--ink-3); }
+
+  /* ════════ 章节标题：小号大写 + 发丝线 ════════ */
+  section { margin-top: 3.25rem; }
+  h2 {
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 1.2rem;
+    display: flex; align-items: baseline; gap: .9rem;
+  }
+  h2::before {               /* 自动序号 01 / 02 / …，增删章节无需手改 */
+    counter-increment: section;
+    content: counter(section, decimal-leading-zero);
+    color: var(--accent);
+    font-size: .72rem;
+    font-weight: 500;
+    letter-spacing: .08em;
+  }
+  h2::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+
+  /* ════════ 关于我 ════════ */
+  .about p { margin: 0 0 .9rem; }
+  .about p:last-child { margin-bottom: 0; }
+
+  /* ════════ 教育 / 奖项：左内容右年份的行式列表 ════════ */
+  .rows { list-style: none; margin: 0; padding: 0; }
+  .rows li {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1.5rem;
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .rows li:last-child { border-bottom: 0; }
+  .rows .when {
+    color: var(--ink-3);
+    font-size: .88rem;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;   /* 年份数字等宽对齐 */
+  }
+  .rows .org  { color: var(--ink-2); }
+
+  /* ════════ 论文列表 ════════ */
+  .pub { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .pub:last-child { border-bottom: 0; }
+  .pub p { margin: 0; }
+  .pub-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.08rem;
+    line-height: 1.4;
+    letter-spacing: -.005em;
+  }
+  .pub-authors { font-size: .9rem; color: var(--ink-2); margin-top: .25rem; }
+  .pub-authors strong { color: var(--ink); font-weight: 600; }  /* 自己的名字加粗 */
+  .pub-venue { font-size: .88rem; margin-top: .3rem; color: var(--ink-3); }
+  .pub-venue .tag {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: .02em;
+    margin-right: .2rem;
+  }
+  .pub-venue a { margin-left: .35rem; }
+
+  /* ════════ 页脚 ════════ */
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    font-size: .82rem;
+    color: var(--ink-3);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+  }
+
+  /* ════════ 手机端：页眉改为上下排列，导航可横向滑动 ════════ */
+  @media (max-width: 540px) {
+    header { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+    h1 { font-size: 2rem; }
+    .rows li { gap: .8rem; }
+    .topnav { gap: 1rem; }
+  }
+</style>
 </head>
+
 <body>
-  <div class="container">
-    <header>
-      <img src="./photo.jpg" alt="Pengfei Zhou" class="avatar" />
-      <div>
-        <h1>Pengfei Zhou</h1>
-        <p class="title">Master's Student in Computer Technology</p>
-      </div>
-    </header>
 
-    <section>
-      <h2>About Me</h2>
-      <p>
-        I am a PhD student in Computer Science and Engineering at The Ohio State University, supervised by
-        <a href="https://www.pingzhang.net/" target="_blank" rel="noopener noreferrer">Prof. Ping Zhang</a>.
-        Before joining OSU, I studied Computer Technology as a master student at University of Science and Technology of China, advised by
-        <a href="https://songqi1990.github.io" target="_blank" rel="noopener noreferrer">Prof. Qi Song</a>.
-        My interest lies in general temporal data analysis and its applications.
-      </p>
-
-      <h3>Education</h3>
-      <ul>
-        <li><strong>Doctor in Computer Science and Engineering</strong>, The Ohio State University (2026–Present)</li>
-        <li><strong>Master in Computer Technology</strong>, University of Science and Technology of China (2023–2026)</li>
-        <li><strong>Bachelor in Plant Protection</strong>, Zhejiang University (2019–2023)</li>
-      </ul>
-
-      <h3>Contact</h3>
-      <div class="contact">
-        <a href="mailto:zhou.5317@osu.edu">📧 zhou.5317@osu.edu</a>
-        <a href="https://github.com/mumiao2000" target="_blank" rel="noopener noreferrer">🔗 GitHub</a>
-        <a href="https://orcid.org/0009-0007-6369-3181" target="_blank" rel="noopener noreferrer">🔑 ORCID</a>
-        <a href="https://scholar.google.com/citations?user=_8wiBlYAAAAJ" target="_blank" rel="noopener noreferrer">🎓 Google Scholar</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Publications</h2>
-
-      <div class="publication">
-        <p><strong>ReLiB-100k: A Real-World 100k-Scale Dataset and Comprehensive Benchmark for Capacity Estimation of Retired Lithium-Ion Batteries</strong></p>
-        <p class="pub-authors">Yunlong Liu, Pengfei Zhou, Hao Wang, Zhiqiang Qin, Ji Wu, Wangqiu Zhou, Gang Luo, Qi Song*, Xiangyang Li</p>
-        <p class="pub-journal">European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD), 2026</p>
-        <a class="pub-link" href="https://doi.org/10.1007/s10618-026-01204-z" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s10618-026-01204-z</a>
-      </div>
-
-      <div class="publication">
-        <p><strong>All-or-Nothing: Towards Hyperedge-Consistent Node Classification</strong></p>
-        <p class="pub-authors">Ziwen Wang, Yihan Wang, Junli Liang, Rong Lin, Wangqiu Zhou, Pengfei Zhou, Ling Zheng, Hao Liu, Qi Song*</p>
-        <p class="pub-journal">The 31st International Conference on Database Systems for Advanced Applications (DASFAA), 2026</p>
-        <a class="pub-link" href="https://doi.org/10.1007/978-981-92-0366-6_14" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/978-981-92-0366-6_14</a>
-      </div>
-
-      <div class="publication">
-        <p><strong>SentGraph: Hierarchical Sentence Graph for Multi-hop Retrieval-Augmented Question Answering</strong></p>
-        <p class="pub-authors">Junli Liang, Pengfei Zhou, Wangqiu Zhou, Wenjie Qing, Qi Zhao, Ziwen Wang, Qi Song*, Xiangyang Li</p>
-        <p class="pub-journal">arXiv, 2026</p>
-        <a class="pub-link" href="https://doi.org/10.48550/arXiv.2601.03014" target="_blank" rel="noopener noreferrer">https://doi.org/10.48550/arXiv.2601.03014</a>
-      </div>
-
-      <div class="publication">
-        <p><strong>Knowledge-Enhanced AI Models for Domain-Specific Application: A Survey</strong></p>
-        <p class="pub-authors">Xiang-Yang Li, Yihan Wang, Junli Liang, Xinyu Wang, Pengfei Zhou, Qi Zhao, Yuhang Zhang, Qi Song*</p>
-        <p class="pub-journal">SCIENCE CHINA Information Sciences (SCIS), 2025</p>
-        <a class="pub-link" href="https://doi.org/10.1007/s11432-025-4635-0" target="_blank" rel="noopener noreferrer">https://doi.org/10.1007/s11432-025-4635-0</a>
-      </div>
-
-      <div class="publication">
-        <p><strong>CrossLinear: Plug-and-Play Cross-Correlation Embedding for Time Series Forecasting with Exogenous Variables</strong></p>
-        <p class="pub-authors">Pengfei Zhou, Yunlong Liu, Junli Liang, Qi Song*, Xiangyang Li</p>
-        <p class="pub-journal">The 31st SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2025</p>
-        <a class="pub-link" href="https://doi.org/10.48550/arXiv.2505.23116" target="_blank" rel="noopener noreferrer">https://doi.org/10.48550/arXiv.2505.23116</a>
-      </div>
-
-      <div class="publication">
-        <p><strong>Capacity Estimation of Retired Lithium-Ion Batteries Using Random Charging Segments from Massive Real-World Data</strong></p>
-        <p class="pub-authors">Pengfei Zhou, Junli Liang, Yunlong Liu, Ji Wu*, Qi Song*, Xiangyang Li</p>
-        <p class="pub-journal">Cell Reports Physical Science (CRPS), 2025</p>
-        <a class="pub-link" href="https://doi.org/10.1016/j.xcrp.2025.102444" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.xcrp.2025.102444</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Awards & Honors</h2>
-      <ul>
-        <li><strong>Graduate Fellowship</strong> — The Ohio State University, 2026</li>
-        <li><strong>National Scholarship</strong> — University of Science and Technology of China, 2025</li>
-        <li><strong>Graduate Academic Scholarship (Grade 1)</strong> — University of Science and Technology of China, 2025</li>
-        <li><strong>Graduate Academic Scholarship (Grade 2)</strong> — University of Science and Technology of China, 2024</li>
-        <li><strong>Graduate Academic Scholarship (Grade 2)</strong> — University of Science and Technology of China, 2023</li>
-      </ul>
-    </section>
-
-    <footer>
-      © 2026 Pengfei Zhou. All rights reserved.
-    </footer>
+  <!-- ════════ ② 顶部导航栏：增删栏目改这里 ════════ -->
+  <div class="topnav">
+    <a class="brand" href="#top">Pengfei Zhou</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#awards">Awards</a>
+    </nav>
   </div>
+
+<div class="container" id="top">
+
+  <!-- ════════ ③ 页眉：姓名 / 头衔 / 联系方式 ════════ -->
+  <header>
+    <!-- 把 photo.jpg 放到本文件同目录即自动显示；加载失败会自动隐藏 -->
+    <img src="./photo.jpg" alt="Pengfei Zhou" class="avatar"
+         onerror="this.remove()" />
+    <div>
+      <h1>Pengfei Zhou</h1>
+      <p class="headline">
+        Ph.D. Student in Computer Science and Engineering<br />
+        <em>The Ohio State University</em>
+      </p>
+      <nav class="links">
+        <a href="mailto:zhou.5317@osu.edu">Email</a><span>/</span>
+        <a href="https://scholar.google.com/citations?user=_8wiBlYAAAAJ" target="_blank" rel="noopener">Google Scholar</a><span>/</span>
+        <a href="https://github.com/mumiao2000" target="_blank" rel="noopener">GitHub</a><span>/</span>
+        <a href="https://orcid.org/0009-0007-6369-3181" target="_blank" rel="noopener">ORCID</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ════════ ④ 自我介绍 ════════ -->
+  <section class="about" id="about">
+    <h2>About</h2>
+    <p>
+      I am a Ph.D. student in Computer Science and Engineering at The Ohio State
+      University, where I am fortunate to be advised by
+      <a href="https://www.pingzhang.net/" target="_blank" rel="noopener">Prof. Ping Zhang</a>.
+      Previously, I received my Master's degree in Computer Technology from the
+      University of Science and Technology of China (USTC), advised by
+      <a href="https://songqi1990.github.io" target="_blank" rel="noopener">Prof. Qi Song</a>.
+    </p>
+    <p>
+      My research centers on temporal data analysis and its real-world
+      applications — spanning time series forecasting, graph-structured learning,
+      and AI for scientific discovery (e.g., battery modeling). Recently, I have
+      been exploring how LLM-driven agents can automate and advance the modeling
+      of temporal data.
+    </p>
+  </section>
+
+  <!-- ════════ ⑤ 教育经历 ════════ -->
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="rows">
+      <li>
+        <div><strong>Ph.D. in Computer Science and Engineering</strong><br />
+        <span class="org">The Ohio State University</span></div>
+        <span class="when">2026 —</span>
+      </li>
+      <li>
+        <div><strong>M.Eng. in Computer Technology</strong><br />
+        <span class="org">University of Science and Technology of China</span></div>
+        <span class="when">2023 — 2026</span>
+      </li>
+      <li>
+        <div><strong>B.Eng. in Plant Protection</strong><br />
+        <span class="org">Zhejiang University</span></div>
+        <span class="when">2019 — 2023</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ════════ ⑥ 论文：新增时复制一个 article.pub 块 ════════ -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <article class="pub">
+      <p class="pub-title">ReLiB-100k: A Real-World 100k-Scale Dataset and Comprehensive Benchmark for Capacity Estimation of Retired Lithium-Ion Batteries</p>
+      <p class="pub-authors">Yunlong Liu, <strong>Pengfei Zhou</strong>, Hao Wang, Zhiqiang Qin, Ji Wu, Wangqiu Zhou, Gang Luo, Qi Song*, Xiangyang Li</p>
+      <p class="pub-venue"><span class="tag">ECML-PKDD 2026</span>
+        European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases
+        <a href="https://doi.org/10.1007/s10618-026-01204-z" target="_blank" rel="noopener">[DOI]</a></p>
+    </article>
+
+    <article class="pub">
+      <p class="pub-title">All-or-Nothing: Towards Hyperedge-Consistent Node Classification</p>
+      <p class="pub-authors">Ziwen Wang, Yihan Wang, Junli Liang, Rong Lin, Wangqiu Zhou, <strong>Pengfei Zhou</strong>, Ling Zheng, Hao Liu, Qi Song*</p>
+      <p class="pub-venue"><span class="tag">DASFAA 2026</span>
+        International Conference on Database Systems for Advanced Applications
+        <a href="https://doi.org/10.1007/978-981-92-0366-6_14" target="_blank" rel="noopener">[DOI]</a></p>
+    </article>
+
+    <article class="pub">
+      <p class="pub-title">SentGraph: Hierarchical Sentence Graph for Multi-hop Retrieval-Augmented Question Answering</p>
+      <p class="pub-authors">Junli Liang, <strong>Pengfei Zhou</strong>, Wangqiu Zhou, Wenjie Qing, Qi Zhao, Ziwen Wang, Qi Song*, Xiangyang Li</p>
+      <p class="pub-venue"><span class="tag">Preprint 2026</span>
+        arXiv
+        <a href="https://doi.org/10.48550/arXiv.2601.03014" target="_blank" rel="noopener">[arXiv]</a></p>
+    </article>
+
+    <article class="pub">
+      <p class="pub-title">Knowledge-Enhanced AI Models for Domain-Specific Application: A Survey</p>
+      <p class="pub-authors">Xiang-Yang Li, Yihan Wang, Junli Liang, Xinyu Wang, <strong>Pengfei Zhou</strong>, Qi Zhao, Yuhang Zhang, Qi Song*</p>
+      <p class="pub-venue"><span class="tag">SCIS 2025</span>
+        SCIENCE CHINA Information Sciences
+        <a href="https://doi.org/10.1007/s11432-025-4635-0" target="_blank" rel="noopener">[DOI]</a></p>
+    </article>
+
+    <article class="pub">
+      <p class="pub-title">CrossLinear: Plug-and-Play Cross-Correlation Embedding for Time Series Forecasting with Exogenous Variables</p>
+      <p class="pub-authors"><strong>Pengfei Zhou</strong>, Yunlong Liu, Junli Liang, Qi Song*, Xiangyang Li</p>
+      <p class="pub-venue"><span class="tag">KDD 2025</span>
+        SIGKDD Conference on Knowledge Discovery and Data Mining
+        <a href="https://doi.org/10.48550/arXiv.2505.23116" target="_blank" rel="noopener">[arXiv]</a></p>
+    </article>
+
+    <article class="pub">
+      <p class="pub-title">Capacity Estimation of Retired Lithium-Ion Batteries Using Random Charging Segments from Massive Real-World Data</p>
+      <p class="pub-authors"><strong>Pengfei Zhou</strong>, Junli Liang, Yunlong Liu, Ji Wu*, Qi Song*, Xiangyang Li</p>
+      <p class="pub-venue"><span class="tag">CRPS 2025</span>
+        Cell Reports Physical Science
+        <a href="https://doi.org/10.1016/j.xcrp.2025.102444" target="_blank" rel="noopener">[DOI]</a></p>
+    </article>
+  </section>
+
+  <!-- ════════ ⑦ 奖项荣誉 ════════ -->
+  <section id="awards">
+    <h2>Awards &amp; Honors</h2>
+    <ul class="rows">
+      <li><div><strong>Graduate Fellowship</strong> <span class="org">· The Ohio State University</span></div><span class="when">2026</span></li>
+      <li><div><strong>National Scholarship</strong> <span class="org">· USTC</span></div><span class="when">2025</span></li>
+      <li><div><strong>Graduate Academic Scholarship, Grade 1</strong> <span class="org">· USTC</span></div><span class="when">2025</span></li>
+      <li><div><strong>Graduate Academic Scholarship, Grade 2</strong> <span class="org">· USTC</span></div><span class="when">2024</span></li>
+      <li><div><strong>Graduate Academic Scholarship, Grade 2</strong> <span class="org">· USTC</span></div><span class="when">2023</span></li>
+    </ul>
+  </section>
+
+  <!-- ════════ ⑧ 页脚 ════════ -->
+  <footer>
+    <span>© 2026 Pengfei Zhou</span>
+    <span>Last updated: July 2026</span>
+  </footer>
+
+</div>
 </body>
 </html>
