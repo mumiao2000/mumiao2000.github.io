@@ -4,66 +4,44 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pengfei Zhou — Homepage</title>
-
-<!-- 字体：Google Fonts CDN，联网时加载；断网自动回退系统字体，不影响排版 -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
-
-<!--
-  ════════════════════════════════════════════════════════════════
-  修改指南（全站只有一个文件，无需任何依赖）
-  ────────────────────────────────────────────────────────────────
-  ① 颜色 / 字体 / 版宽：改下方 <style> 里 :root 的变量即可
-  ② 顶部导航栏：改 <nav class="topnav"> 里的链接；
-     新增栏目 = 加一条 <a href="#某id"> + 给对应 <section> 加相同 id
-  ③ 每个内容区块上方都有中文注释横幅，找到后直接改文字
-  ④ 新增一篇论文：复制一整个 <article class="pub">…</article> 块
-  ⑤ 头像：把照片命名为 photo.jpg 放到本文件同一目录；
-     不放照片时页面会自动收起头像，不影响排版
-  ⑥ 深色模式已内置（跟随系统），配色在 @media (prefers-color-scheme) 里改
-  ════════════════════════════════════════════════════════════════
--->
-
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Regular/result.min.css" /> -->
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Bold/result.min.css" /> -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  /* ════════ ① 主题变量：换肤只改这里 ════════ */
   :root {
-    --bg:        #ffffff;             /* 白底 */
-    --ink:       #182130;             /* 主文字（深海军蓝调近黑） */
-    --ink-2:     rgba(31, 39, 51, .72);  /* 次级文字 */
-    --ink-3:     rgba(31, 39, 51, .50);  /* 辅助文字 */
-    --accent:    #1d4ed8;             /* 强调色（蓝）：会议标签、链接 */
-    --line:      rgba(31, 39, 51, .13);  /* 发丝分隔线 */
-    --mark:      #dbeafe;             /* 文字选中高亮 */
-    --serif: Newsreader, Georgia, "Times New Roman", "Songti SC", "SimSun", serif;
-    --sans:  Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
-             "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    --width: 44rem;                   /* 正文版宽 */
-    --nav-h: 3.25rem;                 /* 顶部导航栏高度 */
+    --bg: #ffffff;
+    --ink: #182130;
+    --ink-2: rgba(24, 33, 48, .72);
+    --ink-3: rgba(24, 33, 48, .50);
+    --accent: #1d4ed8;
+    --line: rgba(24, 33, 48, .13);
+    --mark: #dbeafe;
+    /* --mono: "Maple Mono NF CN", "Maple Mono CN", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; */
+    --mono: "IBM Plex Sans", -apple-system, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    --width: 44rem;
+    --nav-h: 3.25rem;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg:     #0e141c;
-      --ink:    #e8edf4;
-      --ink-2:  rgba(232, 237, 244, .72);
-      --ink-3:  rgba(232, 237, 244, .48);
+      --bg: #0e141c;
+      --ink: #e8edf4;
+      --ink-2: rgba(232, 237, 244, .72);
+      --ink-3: rgba(232, 237, 244, .48);
       --accent: #7aa5f8;
-      --line:   rgba(232, 237, 244, .16);
-      --mark:   #1e3a6e;
+      --line: rgba(232, 237, 244, .16);
+      --mark: #1e3a6e;
     }
   }
 
-  /* ════════ 基础排版（一般不用动） ════════ */
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: var(--sans);
-    font-size: 1rem;
-    line-height: 1.65;
-    letter-spacing: -.004em;
+    font-family: var(--mono);
+    font-size: .95rem;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
   ::selection { background: var(--mark); color: var(--ink); }
@@ -75,34 +53,34 @@
     max-width: var(--width);
     margin: 0 auto;
     padding: 0 1.5rem 2.5rem;
-    counter-reset: section;   /* 章节自动编号 */
+    counter-reset: section;
   }
 
-  /* ════════ ② 顶部导航栏：吸顶 + 锚点跳转 ════════ */
   .topnav {
     position: sticky;
     top: 0;
     z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 2.5rem;
+  }
+  .topnav-inner {
+    max-width: var(--width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: var(--nav-h);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    height: var(--nav-h);
-    margin: 0 -1.5rem 2.25rem;   /* 拉通到视口两侧 */
-    padding: 0 max(1.5rem, calc((100vw - var(--width)) / 2 + 1.5rem));
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    font-size: .82rem;
   }
-  .topnav .brand {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.05rem;
-    letter-spacing: -.01em;
+  .brand {
+    font-weight: 700;
+    font-size: 1rem;
     color: var(--ink);
     white-space: nowrap;
   }
-  .topnav .brand:hover { text-decoration: none; color: var(--accent); }
+  .brand:hover { text-decoration: none; color: var(--accent); }
   .topnav nav {
     display: flex;
     gap: 1.3rem;
@@ -113,14 +91,12 @@
   .topnav nav::-webkit-scrollbar { display: none; }
   .topnav nav a {
     color: var(--ink-2);
-    letter-spacing: .05em;
+    font-size: .82rem;
     text-transform: uppercase;
-    font-size: .76rem;
   }
   .topnav nav a:hover { color: var(--accent); text-decoration: none; }
-  section { scroll-margin-top: calc(var(--nav-h) + 1rem); }  /* 跳转时不被导航挡住 */
+  section { scroll-margin-top: calc(var(--nav-h) + 1rem); }
 
-  /* ════════ 页眉：照片 + 姓名 + 头衔 + 链接 ════════ */
   header {
     display: flex;
     align-items: center;
@@ -129,150 +105,120 @@
     border-bottom: 1px solid var(--line);
   }
   .avatar {
-    width: 7rem; height: 7rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
   }
   h1 {
-    font-family: var(--serif);
-    font-size: 2.7rem;
-    font-weight: 500;
-    font-optical-sizing: auto;
+    font-size: 2.2rem;
+    font-weight: 700;
     letter-spacing: -.02em;
-    margin: 0 0 .4rem;
-    line-height: 1.08;
+    margin: 0 0 .35rem;
+    line-height: 1.15;
   }
-  /* 头部层级：衬线大名 → 斜体身份 → 小帽大学 */
-  .headline {
-    margin: 0;
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--ink-2);
-  }
+  .headline { margin: 0; color: var(--ink-2); font-size: .92rem; }
   .headline em {
-    font-family: var(--sans);
     font-style: normal;
-    font-size: .74rem;
-    letter-spacing: .14em;
+    font-size: .78rem;
     text-transform: uppercase;
     color: var(--ink-3);
   }
 
   .links {
-    display: flex; flex-wrap: wrap; gap: 0 .4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 .4rem;
     margin-top: .7rem;
-    font-size: .82rem;
-    letter-spacing: .04em;
+    font-size: .8rem;
   }
   .links a { text-transform: uppercase; }
   .links span { color: var(--ink-3); }
 
-  /* ════════ 章节标题：小号大写 + 发丝线 ════════ */
-  section { margin-top: 3.25rem; }
+  section { margin-top: 3rem; }
   h2 {
-    font-size: .76rem;
-    font-weight: 600;
-    letter-spacing: .22em;
+    font-size: 1.1rem;
+    font-weight: 700;
     text-transform: uppercase;
-    color: var(--ink-3);
-    margin: 0 0 1.2rem;
-    display: flex; align-items: baseline; gap: .9rem;
+    letter-spacing: .02em;
+    margin: 0 0 1.1rem;
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
   }
-  h2::before {               /* 自动序号 01 / 02 / …，增删章节无需手改 */
+  h2::before {
     counter-increment: section;
-    content: counter(section, decimal-leading-zero);
+    content: counter(section, decimal-leading-zero) ".";
     color: var(--accent);
-    font-size: .72rem;
-    font-weight: 500;
-    letter-spacing: .08em;
   }
   h2::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
 
-  /* ════════ 关于我 ════════ */
   .about p { margin: 0 0 .9rem; }
   .about p:last-child { margin-bottom: 0; }
 
-  /* ════════ 教育 / 奖项：左内容右年份的行式列表 ════════ */
   .rows { list-style: none; margin: 0; padding: 0; }
   .rows li {
-    display: flex; justify-content: space-between; align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     gap: 1.5rem;
     padding: .55rem 0;
     border-bottom: 1px solid var(--line);
   }
   .rows li:last-child { border-bottom: 0; }
-  .rows .when {
-    color: var(--ink-3);
-    font-size: .88rem;
-    white-space: nowrap;
-    font-variant-numeric: tabular-nums;   /* 年份数字等宽对齐 */
-  }
-  .rows .org  { color: var(--ink-2); }
+  .rows .when { color: var(--ink-3); font-size: .85rem; white-space: nowrap; }
+  .rows .org { color: var(--ink-2); }
 
-  /* ════════ 论文列表 ════════ */
   .pub { padding: .9rem 0; border-bottom: 1px solid var(--line); }
   .pub:last-child { border-bottom: 0; }
   .pub p { margin: 0; }
-  .pub-title {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 1.08rem;
-    line-height: 1.4;
-    letter-spacing: -.005em;
-  }
-  .pub-authors { font-size: .9rem; color: var(--ink-2); margin-top: .25rem; }
-  .pub-authors strong { color: var(--ink); font-weight: 600; }  /* 自己的名字加粗 */
-  .pub-venue { font-size: .88rem; margin-top: .3rem; color: var(--ink-3); }
-  .pub-venue .tag {
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: .02em;
-    margin-right: .2rem;
-  }
+  .pub-title { font-weight: 700; font-size: 1rem; line-height: 1.5; }
+  .pub-authors { font-size: .88rem; color: var(--ink-2); margin-top: .25rem; }
+  .pub-authors strong { color: var(--ink); font-weight: 700; }
+  .pub-venue { font-size: .85rem; margin-top: .3rem; color: var(--ink-3); }
+  .pub-venue .tag { color: var(--accent); font-weight: 700; margin-right: .2rem; }
   .pub-venue a { margin-left: .35rem; }
 
-  /* ════════ 页脚 ════════ */
   footer {
     margin-top: 3.5rem;
     padding-top: 1.2rem;
     border-top: 1px solid var(--line);
-    font-size: .82rem;
+    font-size: .8rem;
     color: var(--ink-3);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem;
   }
 
-  /* ════════ 手机端：页眉改为上下排列，导航可横向滑动 ════════ */
   @media (max-width: 540px) {
     header { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
-    h1 { font-size: 2rem; }
+    h1 { font-size: 1.7rem; }
     .rows li { gap: .8rem; }
-    .topnav { gap: 1rem; }
+    .topnav-inner { gap: 1rem; }
   }
 </style>
 </head>
 
 <body>
 
-  <!-- ════════ ② 顶部导航栏：增删栏目改这里 ════════ -->
-  <div class="topnav">
-    <a class="brand" href="#top">Pengfei Zhou</a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#publications">Publications</a>
-      <a href="#awards">Awards</a>
-    </nav>
-  </div>
+  <header class="topnav">
+    <div class="topnav-inner">
+      <a class="brand" href="#top">Pengfei Zhou</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#awards">Awards</a>
+      </nav>
+    </div>
+  </header>
 
 <div class="container" id="top">
 
-  <!-- ════════ ③ 页眉：姓名 / 头衔 / 联系方式 ════════ -->
   <header>
-    <!-- 把 photo.jpg 放到本文件同目录即自动显示；加载失败会自动隐藏 -->
-    <img src="./photo.jpg" alt="Pengfei Zhou" class="avatar"
-         onerror="this.remove()" />
+    <img src="./photo.jpg" alt="Pengfei Zhou" class="avatar" onerror="this.remove()" />
     <div>
       <h1>Pengfei Zhou</h1>
       <p class="headline">
@@ -288,7 +234,6 @@
     </div>
   </header>
 
-  <!-- ════════ ④ 自我介绍 ════════ -->
   <section class="about" id="about">
     <h2>About</h2>
     <p>
@@ -308,7 +253,6 @@
     </p>
   </section>
 
-  <!-- ════════ ⑤ 教育经历 ════════ -->
   <section id="education">
     <h2>Education</h2>
     <ul class="rows">
@@ -330,7 +274,6 @@
     </ul>
   </section>
 
-  <!-- ════════ ⑥ 论文：新增时复制一个 article.pub 块 ════════ -->
   <section id="publications">
     <h2>Publications</h2>
 
@@ -383,7 +326,6 @@
     </article>
   </section>
 
-  <!-- ════════ ⑦ 奖项荣誉 ════════ -->
   <section id="awards">
     <h2>Awards &amp; Honors</h2>
     <ul class="rows">
@@ -395,7 +337,6 @@
     </ul>
   </section>
 
-  <!-- ════════ ⑧ 页脚 ════════ -->
   <footer>
     <span>© 2026 Pengfei Zhou</span>
     <span>Last updated: July 2026</span>
