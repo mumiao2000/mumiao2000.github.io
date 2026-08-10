@@ -4,218 +4,78 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pengfei Zhou — Homepage</title>
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Regular/result.min.css" /> -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-Bold/result.min.css" /> -->
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --bg: #ffffff;
-    --ink: #182130;
-    --ink-2: rgba(24, 33, 48, .72);
-    --ink-3: rgba(24, 33, 48, .50);
-    --accent: #1d4ed8;
-    --line: rgba(24, 33, 48, .13);
-    --mark: #dbeafe;
-    /* --mono: "Maple Mono NF CN", "Maple Mono CN", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; */
-    --mono: "IBM Plex Sans", -apple-system, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    --width: 44rem;
-    --nav-h: 3.25rem;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0e141c;
-      --ink: #e8edf4;
-      --ink-2: rgba(232, 237, 244, .72);
-      --ink-3: rgba(232, 237, 244, .48);
-      --accent: #7aa5f8;
-      --line: rgba(232, 237, 244, .16);
-      --mark: #1e3a6e;
-    }
-  }
-
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--mono);
-    font-size: .95rem;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: var(--mark); color: var(--ink); }
-
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-  .container {
-    max-width: var(--width);
+    max-width: 42rem;
     margin: 0 auto;
-    padding: 0 1.5rem 2.5rem;
-    counter-reset: section;
+    padding: 1.5rem 1.25rem 3rem;
+    background: #fff;
+    color: #1a2733;
+    font: 1rem/1.7 -apple-system, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   }
+  a { color: #1d4ed8; text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  .topnav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--bg);
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 2.5rem;
-  }
-  .topnav-inner {
-    max-width: var(--width);
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    height: var(--nav-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-  }
-  .brand {
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--ink);
-    white-space: nowrap;
-  }
-  .brand:hover { text-decoration: none; color: var(--accent); }
-  .topnav nav {
-    display: flex;
-    gap: 1.3rem;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-  }
-  .topnav nav::-webkit-scrollbar { display: none; }
-  .topnav nav a {
-    color: var(--ink-2);
-    font-size: .82rem;
-    text-transform: uppercase;
-  }
-  .topnav nav a:hover { color: var(--accent); text-decoration: none; }
-  section { scroll-margin-top: calc(var(--nav-h) + 1rem); }
+  nav { border-bottom: 1px solid #dbe4ef; padding-bottom: .8rem; margin-bottom: 2rem; }
+  nav a { margin-right: 1.2rem; font-size: .9rem; }
+  nav .brand { font-weight: 700; color: #1a2733; }
 
-  header {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--line);
-  }
-  .avatar {
-    width: 7rem;
-    height: 7rem;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
-  }
-  h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    letter-spacing: -.02em;
-    margin: 0 0 .35rem;
-    line-height: 1.15;
-  }
-  .headline { margin: 0; color: var(--ink-2); font-size: .92rem; }
-  .headline em {
-    font-style: normal;
-    font-size: .78rem;
-    text-transform: uppercase;
-    color: var(--ink-3);
-  }
+  header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+  .avatar { width: 6.5rem; height: 6.5rem; border-radius: 50%; object-fit: cover; }
+  h1 { font-size: 1.8rem; margin: 0 0 .3rem; }
+  .headline { margin: 0 0 .5rem; color: #4a5a6a; font-size: .92rem; }
+  .links a { margin-right: .8rem; font-size: .88rem; }
 
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 .4rem;
-    margin-top: .7rem;
-    font-size: .8rem;
-  }
-  .links a { text-transform: uppercase; }
-  .links span { color: var(--ink-3); }
-
-  section { margin-top: 3rem; }
   h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .02em;
-    margin: 0 0 1.1rem;
-    display: flex;
-    align-items: baseline;
-    gap: .8rem;
+    font-size: 1.05rem;
+    color: #1d4ed8;
+    margin: 2.2rem 0 .8rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid #dbe4ef;
   }
-  h2::before {
-    counter-increment: section;
-    content: counter(section, decimal-leading-zero) ".";
-    color: var(--accent);
-  }
-  h2::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+  p { margin: 0 0 .8rem; }
 
-  .about p { margin: 0 0 .9rem; }
-  .about p:last-child { margin-bottom: 0; }
-
-  .rows { list-style: none; margin: 0; padding: 0; }
-  .rows li {
+  ul { list-style: none; margin: 0; padding: 0; }
+  ul li {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    gap: 1.5rem;
-    padding: .55rem 0;
-    border-bottom: 1px solid var(--line);
+    gap: 1rem;
+    padding: .4rem 0;
+    border-bottom: 1px solid #eef2f7;
   }
-  .rows li:last-child { border-bottom: 0; }
-  .rows .when { color: var(--ink-3); font-size: .85rem; white-space: nowrap; }
-  .rows .org { color: var(--ink-2); }
+  ul li:last-child { border-bottom: 0; }
+  .when { color: #7a8a9a; font-size: .85rem; white-space: nowrap; }
+  .org { color: #4a5a6a; font-size: .92rem; }
 
-  .pub { padding: .9rem 0; border-bottom: 1px solid var(--line); }
-  .pub:last-child { border-bottom: 0; }
-  .pub p { margin: 0; }
-  .pub-title { font-weight: 700; font-size: 1rem; line-height: 1.5; }
-  .pub-authors { font-size: .88rem; color: var(--ink-2); margin-top: .25rem; }
-  .pub-authors strong { color: var(--ink); font-weight: 700; }
-  .pub-venue { font-size: .85rem; margin-top: .3rem; color: var(--ink-3); }
-  .pub-venue .tag { color: var(--accent); font-weight: 700; margin-right: .2rem; }
-  .pub-venue a { margin-left: .35rem; }
+  .pub { margin-bottom: 1.2rem; }
+  .pub p { margin: 0 0 .15rem; }
+  .pub-title { font-weight: 700; }
+  .pub-authors { font-size: .88rem; color: #4a5a6a; }
+  .pub-venue { font-size: .85rem; color: #7a8a9a; }
+  .tag { color: #1d4ed8; font-weight: 700; }
 
-  footer {
-    margin-top: 3.5rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--line);
-    font-size: .8rem;
-    color: var(--ink-3);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: .5rem;
-  }
+  footer { margin-top: 3rem; font-size: .8rem; color: #7a8a9a; }
 
   @media (max-width: 540px) {
-    header { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
-    h1 { font-size: 1.7rem; }
-    .rows li { gap: .8rem; }
-    .topnav-inner { gap: 1rem; }
+    header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    h1 { font-size: 1.5rem; }
   }
 </style>
 </head>
 
 <body>
 
-  <header class="topnav">
-    <div class="topnav-inner">
-      <a class="brand" href="#top">Pengfei Zhou</a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#publications">Publications</a>
-        <a href="#awards">Awards</a>
-      </nav>
-    </div>
-  </header>
+<nav>
+  <a class="brand" href="#top">Pengfei Zhou</a>
+  <a href="#about">About</a>
+  <a href="#education">Education</a>
+  <a href="#publications">Publications</a>
+  <a href="#awards">Awards</a>
+</nav>
 
-<div class="container" id="top">
+<main id="top">
 
   <header>
     <img src="./photo.jpg" alt="Pengfei Zhou" class="avatar" onerror="this.remove()" />
@@ -223,18 +83,18 @@
       <h1>Pengfei Zhou</h1>
       <p class="headline">
         Ph.D. Student in Computer Science and Engineering<br />
-        <em>The Ohio State University</em>
+        The Ohio State University
       </p>
-      <nav class="links">
-        <a href="mailto:zhou.5317@osu.edu">Email</a><span>/</span>
-        <a href="https://scholar.google.com/citations?user=_8wiBlYAAAAJ" target="_blank" rel="noopener">Google Scholar</a><span>/</span>
-        <a href="https://github.com/mumiao2000" target="_blank" rel="noopener">GitHub</a><span>/</span>
+      <p class="links">
+        <a href="mailto:zhou.5317@osu.edu">Email</a>
+        <a href="https://scholar.google.com/citations?user=_8wiBlYAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/mumiao2000" target="_blank" rel="noopener">GitHub</a>
         <a href="https://orcid.org/0009-0007-6369-3181" target="_blank" rel="noopener">ORCID</a>
-      </nav>
+      </p>
     </div>
   </header>
 
-  <section class="about" id="about">
+  <section id="about">
     <h2>About</h2>
     <p>
       I am a Ph.D. student in Computer Science and Engineering at The Ohio State
@@ -255,7 +115,7 @@
 
   <section id="education">
     <h2>Education</h2>
-    <ul class="rows">
+    <ul>
       <li>
         <div><strong>Ph.D. in Computer Science and Engineering</strong><br />
         <span class="org">The Ohio State University</span></div>
@@ -277,58 +137,52 @@
   <section id="publications">
     <h2>Publications</h2>
 
-    <article class="pub">
+    <div class="pub">
       <p class="pub-title">ReLiB-100k: A Real-World 100k-Scale Dataset and Comprehensive Benchmark for Capacity Estimation of Retired Lithium-Ion Batteries</p>
       <p class="pub-authors">Yunlong Liu, <strong>Pengfei Zhou</strong>, Hao Wang, Zhiqiang Qin, Ji Wu, Wangqiu Zhou, Gang Luo, Qi Song*, Xiangyang Li</p>
       <p class="pub-venue"><span class="tag">ECML-PKDD 2026</span>
-        European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases
         <a href="https://doi.org/10.1007/s10618-026-01204-z" target="_blank" rel="noopener">[DOI]</a></p>
-    </article>
+    </div>
 
-    <article class="pub">
+    <div class="pub">
       <p class="pub-title">All-or-Nothing: Towards Hyperedge-Consistent Node Classification</p>
       <p class="pub-authors">Ziwen Wang, Yihan Wang, Junli Liang, Rong Lin, Wangqiu Zhou, <strong>Pengfei Zhou</strong>, Ling Zheng, Hao Liu, Qi Song*</p>
       <p class="pub-venue"><span class="tag">DASFAA 2026</span>
-        International Conference on Database Systems for Advanced Applications
         <a href="https://doi.org/10.1007/978-981-92-0366-6_14" target="_blank" rel="noopener">[DOI]</a></p>
-    </article>
+    </div>
 
-    <article class="pub">
+    <div class="pub">
       <p class="pub-title">SentGraph: Hierarchical Sentence Graph for Multi-hop Retrieval-Augmented Question Answering</p>
       <p class="pub-authors">Junli Liang, <strong>Pengfei Zhou</strong>, Wangqiu Zhou, Wenjie Qing, Qi Zhao, Ziwen Wang, Qi Song*, Xiangyang Li</p>
       <p class="pub-venue"><span class="tag">Preprint 2026</span>
-        arXiv
         <a href="https://doi.org/10.48550/arXiv.2601.03014" target="_blank" rel="noopener">[arXiv]</a></p>
-    </article>
+    </div>
 
-    <article class="pub">
+    <div class="pub">
       <p class="pub-title">Knowledge-Enhanced AI Models for Domain-Specific Application: A Survey</p>
       <p class="pub-authors">Xiang-Yang Li, Yihan Wang, Junli Liang, Xinyu Wang, <strong>Pengfei Zhou</strong>, Qi Zhao, Yuhang Zhang, Qi Song*</p>
       <p class="pub-venue"><span class="tag">SCIS 2025</span>
-        SCIENCE CHINA Information Sciences
         <a href="https://doi.org/10.1007/s11432-025-4635-0" target="_blank" rel="noopener">[DOI]</a></p>
-    </article>
+    </div>
 
-    <article class="pub">
+    <div class="pub">
       <p class="pub-title">CrossLinear: Plug-and-Play Cross-Correlation Embedding for Time Series Forecasting with Exogenous Variables</p>
       <p class="pub-authors"><strong>Pengfei Zhou</strong>, Yunlong Liu, Junli Liang, Qi Song*, Xiangyang Li</p>
       <p class="pub-venue"><span class="tag">KDD 2025</span>
-        SIGKDD Conference on Knowledge Discovery and Data Mining
         <a href="https://doi.org/10.48550/arXiv.2505.23116" target="_blank" rel="noopener">[arXiv]</a></p>
-    </article>
+    </div>
 
-    <article class="pub">
+    <div class="pub">
       <p class="pub-title">Capacity Estimation of Retired Lithium-Ion Batteries Using Random Charging Segments from Massive Real-World Data</p>
       <p class="pub-authors"><strong>Pengfei Zhou</strong>, Junli Liang, Yunlong Liu, Ji Wu*, Qi Song*, Xiangyang Li</p>
       <p class="pub-venue"><span class="tag">CRPS 2025</span>
-        Cell Reports Physical Science
         <a href="https://doi.org/10.1016/j.xcrp.2025.102444" target="_blank" rel="noopener">[DOI]</a></p>
-    </article>
+    </div>
   </section>
 
   <section id="awards">
     <h2>Awards &amp; Honors</h2>
-    <ul class="rows">
+    <ul>
       <li><div><strong>Graduate Fellowship</strong> <span class="org">· The Ohio State University</span></div><span class="when">2026</span></li>
       <li><div><strong>National Scholarship</strong> <span class="org">· USTC</span></div><span class="when">2025</span></li>
       <li><div><strong>Graduate Academic Scholarship, Grade 1</strong> <span class="org">· USTC</span></div><span class="when">2025</span></li>
@@ -337,11 +191,8 @@
     </ul>
   </section>
 
-  <footer>
-    <span>© 2026 Pengfei Zhou</span>
-    <span>Last updated: July 2026</span>
-  </footer>
+  <footer>© 2026 Pengfei Zhou · Last updated: July 2026</footer>
 
-</div>
+</main>
 </body>
 </html>
